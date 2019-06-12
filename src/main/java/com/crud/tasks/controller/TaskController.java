@@ -14,11 +14,11 @@ public class TaskController {
         return new ArrayList<>();
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
-    public TaskDto getTask(@RequestBody Long taskId) {
+    public TaskDto getTask(@RequestParam Long taskId) {
         return new TaskDto(1L,"test title","test_content");
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
-    public void deleteTask(@RequestBody Long taskId) {
+    public void deleteTask(@RequestParam  Long taskId) {
 
     }
 
