@@ -36,8 +36,8 @@ public class TaskController {
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
        return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
-    @RequestMapping(method = RequestMethod.POST, value = "createTask", consumes = "application/x-www-form-urlencoded")
-    public  void createTask(@RequestBody TaskDto taskDto) {
+    @RequestMapping(method = RequestMethod.POST, value = "createTask", consumes = {"application/x-www-form-urlencoded"})
+    public  void createTask(@RequestParam TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
 }
