@@ -4,7 +4,7 @@ package com.crud.tasks.client;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
-import com.crud.tasks.trello.config.TrelloConfig;
+import com.crud.tasks.config.TrelloConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
