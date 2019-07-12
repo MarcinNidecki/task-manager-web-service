@@ -20,7 +20,7 @@ public class CoreConfiguration  implements WebMvcConfigurer {
         return new RestTemplate();
     }
 
-    @Bean
+
     public Docket api() {
         return  new Docket(DocumentationType.SWAGGER_2)
                 .select()
