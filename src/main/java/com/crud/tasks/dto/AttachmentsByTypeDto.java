@@ -1,4 +1,4 @@
-package com.crud.tasks.domain;
+package com.crud.tasks.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrelloDto {
+public class AttachmentsByTypeDto {
 
-    @JsonProperty("board")
-    private  Long board ;
+    @JsonProperty("trello")
+    private  TrelloDto trello ;
 
-    @JsonProperty("card")
-    private Long card;
 }
