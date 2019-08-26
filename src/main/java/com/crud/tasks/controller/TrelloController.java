@@ -1,6 +1,5 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.client.TrelloClient;
 import com.crud.tasks.dto.CreatedTrelloCardDto;
 import com.crud.tasks.dto.TrelloBoardDto;
 import com.crud.tasks.dto.TrelloCardDto;
@@ -16,8 +15,6 @@ public class TrelloController {
 
     @Autowired
     private TrelloFacade trelloFacade;
-    @Autowired
-    private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
