@@ -8,9 +8,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 @Service
 public class MailCreatorService {
@@ -22,6 +20,10 @@ public class MailCreatorService {
     private AdminConfig adminConfig;
 
     public String buildTrelloCardEmail(String message) {
+        List<String> functionality = new ArrayList<>();
+        functionality.add("You can manage your tasks");
+        functionality.add("Provides connection with Trello Account");
+        functionality.add("Application allows sending tasks to Trello");
         Context context = new Context();
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
@@ -35,6 +37,9 @@ public class MailCreatorService {
         context.setVariable("company_mail", adminConfig.getCompanyMail());
         context.setVariable("company_phone", adminConfig.getCompanyPhone());
         context.setVariable("current_day", new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.getTime()));
+        context.setVariable("show_button", false);
+        context.setVariable("is_friend", true);
+        context.setVariable("application_functionality",functionality);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 }
