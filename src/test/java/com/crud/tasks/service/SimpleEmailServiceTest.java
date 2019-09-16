@@ -27,7 +27,7 @@ public class SimpleEmailServiceTest {
         //Given
         Mail mail = new Mail("test@test.com", "test", "Test message", null);
         //When
-        simpleEmailService.send(mail);
+        simpleEmailService.send(mail,false);
         //Then
         verify(javaMailSender, times(1)).send(Mockito.any(SimpleMailMessage.class));
     }
