@@ -2,14 +2,11 @@ package com.crud.tasks.service;
 
 import com.crud.tasks.client.TrelloClient;
 import com.crud.tasks.config.AdminConfig;
-import com.crud.tasks.dto.CreatedTrelloCardDto;
 import com.crud.tasks.domain.Mail;
-import com.crud.tasks.dto.TrelloBoardDto;
+import com.crud.tasks.dto.CreatedTrelloCardDto;
 import com.crud.tasks.dto.TrelloCardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static java.util.Optional.ofNullable;
 
@@ -34,6 +31,4 @@ public class TrelloService {
         return newCard;
     }
 
-    public List<TrelloBoardDto> fetchTrelloBoards() {
-    }
 }
