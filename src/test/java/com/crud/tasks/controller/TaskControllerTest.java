@@ -52,8 +52,7 @@ public class TaskControllerTest {
 
         //When & Then
 
-        mockMvc.perform(get("/v1/task/getTask").contentType(MediaType.APPLICATION_JSON)
-                .param("taskId", "1"))
+        mockMvc.perform(get("/v1/tasks/{taskId}", 1).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id",is(1)))
                 .andExpect(jsonPath("$.title",is("Title")))
@@ -70,7 +69,7 @@ public class TaskControllerTest {
         when(taskMapper.mapToTaskDtoList(any())).thenReturn(tasksList);
 
         //When & Then
-        mockMvc.perform(get("/v1/task/getTasks").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/tasks").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 //Trello  board fields
                 .andExpect(jsonPath("$", hasSize(2)))
@@ -85,8 +84,7 @@ public class TaskControllerTest {
     @Test
     public void shodDeleteTask() throws Exception {
         //When & Then
-        mockMvc.perform(delete("/v1/task/deleteTask").contentType(MediaType.APPLICATION_JSON)
-                .param("taskId", "1"))
+        mockMvc.perform(delete("/v1/tasks/{taskId}", 1).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
     }
@@ -102,7 +100,7 @@ public class TaskControllerTest {
         Gson gson = new Gson();
         String createTask = gson.toJson(task);
         //When & Then
-        mockMvc.perform(post("/v1/task/createTask").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/v1/tasks").contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(createTask))
                 .andExpect(status().isOk());
@@ -130,7 +128,7 @@ public class TaskControllerTest {
         String jsonContent = gson.toJson(task);
 
         //When & Given
-        mockMvc.perform(put("/v1/task/updateTask").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/v1/tasks").contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().isOk())
